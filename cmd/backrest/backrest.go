@@ -107,7 +107,7 @@ func main() {
 		zap.L().Fatal("error creating peer state manager", zap.Error(err))
 	}
 
-	syncMgr := syncapi.NewSyncManager(configMgr, opLog, orch, peerStateManager)
+	syncMgr := syncapi.NewSyncManager(configMgr, opLog, logStore, orch, peerStateManager)
 	authenticator := newAuthenticator(configMgr)
 
 	// Start background services
