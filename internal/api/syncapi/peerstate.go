@@ -3,7 +3,6 @@ package syncapi
 import (
 	"fmt"
 	"maps"
-	"slices"
 	"sync"
 	"time"
 
@@ -68,9 +67,9 @@ func peerStateToProto(state *PeerState) *v1.PeerState {
 		LastHeartbeatMillis: state.LastHeartbeat.UnixMilli(),
 		State:               state.ConnectionState,
 		StatusMessage:       state.ConnectionStateMessage,
-		KnownRepos:          slices.Collect(maps.Keys(state.KnownRepos)),
-		KnownPlans:          slices.Collect(maps.Keys(state.KnownPlans)),
-		RemoteConfig:        state.Config,
+		// KnownRepos:          slices.Collect(maps.Keys(state.KnownRepos)),
+		// KnownPlans:          slices.Collect(maps.Keys(state.KnownPlans)),
+		RemoteConfig: state.Config,
 	}
 }
 
