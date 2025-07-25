@@ -2,6 +2,7 @@ module github.com/garethgeorge/backrest
 
 go 1.24
 
+// Pin dependencies to specific versions
 replace (
 	modernc.org/libc => modernc.org/libc v1.55.3
 	modernc.org/mathutil => modernc.org/mathutil v1.6.0
@@ -25,7 +26,6 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/hashicorp/golang-lru/v2 v2.0.7
-	github.com/hectane/go-acl v0.0.0-20230122075934-ca0b05cb1adb
 	github.com/mattn/go-colorable v0.1.14
 	github.com/natefinch/atomic v1.0.1
 	github.com/ncruces/zenity v0.10.14
