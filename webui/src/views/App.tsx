@@ -7,6 +7,7 @@ import {
   ExclamationOutlined,
   SettingOutlined,
   LoadingOutlined,
+  FileAddOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Empty, Layout, Menu, Spin, theme } from "antd";
@@ -408,6 +409,15 @@ const getSidenavItems = (config: Config | null): MenuProps["items"] => {
       onClick: async () => {
         const { SettingsModal } = await import("./SettingsModal");
         showModal(<SettingsModal />);
+      },
+    },
+    {
+      key: "import-repo",
+      icon: <FileAddOutlined />,
+      label: "Import Repo from JSON",
+      onClick: async () => {
+        const { ImportPlanModal } = await import("./ImportRepoModal");
+        showModal(<ImportPlanModal/>);
       },
     },
   ];
