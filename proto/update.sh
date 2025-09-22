@@ -1,3 +1,3 @@
 #! /bin/sh 
 
-buf generate
+npx buf generate

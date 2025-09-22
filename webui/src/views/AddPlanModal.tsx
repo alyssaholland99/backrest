@@ -83,6 +83,18 @@ export const AddPlanModal = ({ template }: { template: Plan | null }) => {
     return null;
   }
 
+  const setupNotifications = () => {
+    console.log("TEST")
+    if (!("Notification" in window)) {
+      // Check if the browser supports notifications
+      alert("This browser does not support desktop notification");
+    }
+    if (Notification.permission === "granted") {
+      return
+    }
+    Notification.requestPermission();
+  }
+
   const handleDestroy = async () => {
     setConfirmLoading(true);
 
@@ -133,6 +145,12 @@ export const AddPlanModal = ({ template }: { template: Plan | null }) => {
         )
       ) {
         delete plan.retention;
+      }
+
+      console.log(plan.notifications?.notifyFail)
+
+      if (plan.notifications?.notifyFail == true || plan.notifications?.notifySuccess == true) {
+        setupNotifications()
       }
 
       const configCopy = clone(ConfigSchema, config);
@@ -532,10 +550,10 @@ export const AddPlanModal = ({ template }: { template: Plan | null }) => {
           {/* Plan.notification */}
           <Form.Item label={<Tooltip title="Choose which backup events to notify about">Notifications</Tooltip>} >
             <>
-              <Form.Item name={["notifications", "backupSuccess"]} valuePropName="checked">
+              <Form.Item name={["notifications", "notifySuccess"]} valuePropName="checked">
                 <Checkbox>Backup Success</Checkbox>
               </Form.Item>
-              <Form.Item name={["notifications", "backupFailure"]} valuePropName="checked">
+              <Form.Item name={["notifications", "notifyFail"]} valuePropName="checked">
                 <Checkbox>Backup Failure</Checkbox>
               </Form.Item>
             </>

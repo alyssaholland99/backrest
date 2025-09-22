@@ -1,19 +1,22 @@
 version: v2
 clean: true
 plugins:
-  - local: protoc-gen-go
+  - remote: buf.build/protocolbuffers/go
     out: ../gen/go
     opt:
       - paths=source_relative
-  - local: protoc-gen-go-grpc
+
+  - remote: buf.build/grpc/go
     out: ../gen/go
     opt:
       - paths=source_relative
-  - local: protoc-gen-connect-go
+
+  - remote: buf.build/connectrpc/go
     out: ../gen/go
     opt:
       - paths=source_relative
-  - local: protoc-gen-es
+
+  - remote: buf.build/bufbuild/es
     out: ../webui/gen/ts
     opt:
       - target=ts
