@@ -529,6 +529,18 @@ export const AddPlanModal = ({ template }: { template: Plan | null }) => {
           {/* Plan.retention */}
           <RetentionPolicyView />
 
+          {/* Plan.notification */}
+          <Form.Item label={<Tooltip title="Choose which backup events to notify about">Notifications</Tooltip>} >
+            <>
+              <Form.Item name={["notifications", "backupSuccess"]} valuePropName="checked">
+                <Checkbox>Backup Success</Checkbox>
+              </Form.Item>
+              <Form.Item name={["notifications", "backupFailure"]} valuePropName="checked">
+                <Checkbox>Backup Failure</Checkbox>
+              </Form.Item>
+            </>
+          </Form.Item>
+
           {/* Plan.hooks */}
           <Form.Item
             label={<Tooltip title={hooksListTooltipText}>Hooks</Tooltip>}
